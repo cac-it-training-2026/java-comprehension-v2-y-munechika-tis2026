@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * 標準入力を制御するクラス
+ * 標準入力を制御する
  */
 class ConsoleReader {
 

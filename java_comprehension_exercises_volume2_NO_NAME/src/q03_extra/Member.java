@@ -1,5 +1,6 @@
 package q03_extra;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +26,8 @@ public class Member {
 		this.coupons = new ArrayList<Coupon>();
 	}
 
-	public static Member getInstance(int id, String password, String name, String birthdayString) throws Exception {
+	public static Member getInstance(int id, String password, String name, String birthdayString)
+			throws ParseException {
 		Date birthday = new SimpleDateFormat("yyyy/MM/dd").parse(birthdayString);
 
 		Member member = new Member(id, password, name, birthday, (int) (Math.random() * 10000 % 3 + 1));
@@ -39,8 +41,8 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age + ", rank=" + rank
-				+ ", coupons=" + coupons + "]";
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", birthday=" + birthday + ", rank="
+				+ rank + ", coupons=" + coupons + "]";
 	}
 
 	public void showMember() {

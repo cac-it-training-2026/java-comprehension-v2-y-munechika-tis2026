@@ -1,4 +1,4 @@
-package q02_advanced.question02;
+package q03_extra;
 
 import java.util.List;
 
@@ -21,5 +21,13 @@ public class MemberManager {
 			}
 		}
 		System.out.println("該当者はいませんでした。");
+	}
+
+	public static void ShowCreateUser(MemberStorage members, int id) {
+		for (Member member : members.getMembers()) {
+			if (id == member.getId()) {
+				System.out.println(member);
+			}
+		}
 	}
 }

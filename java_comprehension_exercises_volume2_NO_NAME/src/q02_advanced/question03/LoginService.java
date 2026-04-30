@@ -11,4 +11,21 @@ class LoginService {
 	private MemberStorage memberStorage;
 
 	//TODO ここから処理を記述
+	public LoginService(MemberStorage memberStorage) {
+		this.memberStorage = memberStorage;
+	}
+
+	public Member doLogin(int id, String password) {
+		try {
+			for (Member member : memberStorage.getMembers()) {
+				if (id == member.getId() && password.equals(member.getPassword())) {
+					return member;
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		return null;
+	}
 }

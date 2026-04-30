@@ -1,30 +1,34 @@
-package q02_advanced.question02;
+package q03_extra;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Member {
 	private int id;
 	private String password;
 	private String name;
-	private int age;
+	private Date birthday;
 	private int rank;
 	private List<Coupon> coupons;
 
 	public Member() {
 	}
 
-	public Member(int id, String password, String name, int age, int rank) {
+	public Member(int id, String password, String name, Date birthday, int rank) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
-		this.age = age;
+		this.birthday = birthday;
 		this.rank = rank;
 		this.coupons = new ArrayList<Coupon>();
 	}
 
-	public static Member getInstance(int id, String password, String name, int age, int rank) {
-		Member member = new Member(id, password, name, age, rank);
+	public static Member getInstance(int id, String password, String name, String birthdayString) throws Exception {
+		Date birthday = new SimpleDateFormat("yyyy/MM/dd").parse(birthdayString);
+
+		Member member = new Member(id, password, name, birthday, (int) (Math.random() * 10000 % 3 + 1));
 
 		member.coupons.add(new Coupon(1, 0.5, "最初の特典"));
 		member.coupons.add(new Coupon(2, 0.25, "今月の特典"));
@@ -41,7 +45,6 @@ public class Member {
 
 	public void showMember() {
 		System.out.println(toString());
-		System.out.println("******************");
 	}
 
 	public int getId() {

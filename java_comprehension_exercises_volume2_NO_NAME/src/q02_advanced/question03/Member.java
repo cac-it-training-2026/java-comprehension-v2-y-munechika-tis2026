@@ -1,4 +1,4 @@
-package q02_advanced.question02;
+package q02_advanced.question03;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,6 @@ public class Member {
 
 	public void showMember() {
 		System.out.println(toString());
-		System.out.println("******************");
 	}
 
 	public int getId() {

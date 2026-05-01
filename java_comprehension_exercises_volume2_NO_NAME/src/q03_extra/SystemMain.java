@@ -63,7 +63,73 @@ public class SystemMain {
 
 		System.out.println("新規に会員登録します。必要事項を入力してください");
 		//TODO ここから実装する
+		while (!(isCreated)) {
+			try {
+				boolean isOK = false;
+				while (!(isOK)) {
+					System.out.print("input id[1-9]>>");
+					try {
+						inputId = (Integer) new MemberIdReader().input();
+					} catch (IllegalInputException e) {
+						// TODO: handle exception
+						System.out.println(e.getMessage());
+						continue;
+					}
+					isOK = true;
+				}
 
+				isOK = false;
+				while (!(isOK)) {
+					System.out.print("input password>>");
+					try {
+						inputPassword = (String) new MemberPasswordReader().input();
+					} catch (IllegalInputException e) {
+						// TODO: handle exception
+						System.out.println(e.getMessage());
+						continue;
+					}
+					isOK = true;
+				}
+
+				isOK = false;
+				while (!(isOK)) {
+					System.out.print("input name>>");
+					try {
+						inputName = (String) new MemberNameReader().input();
+					} catch (IllegalInputException e) {
+						// TODO: handle exception
+						System.out.println(e.getMessage());
+						continue;
+					}
+					isOK = true;
+				}
+
+				isOK = false;
+				while (!(isOK)) {
+					System.out.print("input birthday>>");
+					try {
+						inputBirthday = (String) new MemberBirthdayReader().input();
+					} catch (IllegalInputException e) {
+						// TODO: handle exception
+						System.out.println(e.getMessage());
+						continue;
+					}
+					isOK = true;
+				}
+
+				isCreated = createUserService.execute(inputId, inputPassword, inputName, inputBirthday);
+			} catch (IllegalInputException e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+				continue;
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				System.exit(0);
+			}
+		}
+		MemberManager.ShowCreateUser(memberStorage, inputId);
+		System.out.println("******************");
 	}
 
 }
